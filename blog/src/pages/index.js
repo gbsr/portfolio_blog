@@ -89,7 +89,7 @@ export default function Home({ posts }) {
 					</p>
 					<p>
 						This is where I will post random bits and bobs I find/create as I am trying to shift my career
-						towards being a frontend developer.
+						towards being a frontend developer. Click the blog card to expand the post :)
 					</p>
 				</section>
 
