@@ -62,7 +62,8 @@ export default function BlogPost({
 	};
 
 	return (
-		<div className={`${isExpanded ? 'expand' : 'truncate'}`} onClick={handleContentClick}>
+		<div className={`${isExpanded ? 'expand' : 'truncate'}`} onClick={handleContentClick}
+			style={{ marginBottom: '106px' }} >
 			<h2 className={styles.title}>{title}</h2>
 			{tag.map((tagItem, index) => (
 				<span
@@ -75,9 +76,9 @@ export default function BlogPost({
 			))}
 			<div
 				ref={contentRef}
-				className={styles.content}
+				className={isExpanded ? 'expanded' : 'truncated'}
 				dangerouslySetInnerHTML={{ __html: content }}
-				style={{ opacity: isExpanded ? 1 : 0.65, padding: '1rem' }}
+			// style={{ opacity: isExpanded ? 1 : 0.65, padding: '1rem' }}
 			></div>
 		</div>
 	);

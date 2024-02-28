@@ -85,6 +85,7 @@ export default function Home({ posts }) {
 				<title>Pushing Pixels - Learning Frontend Development one line at a time</title>
 				<meta name="viewport" content="width=device-width, initial-scale=1" />
 				<meta name="description" content="Personal blog documenting my journey learning frontend development. Featuring code snippets, experiments, and insights into HTML, CSS, JavaScript, React, and more."></meta>
+				<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap" rel="stylesheet" />
 			</Head>
 			<main className={styles.main}>
 				<section className={styles.mainContent}>
