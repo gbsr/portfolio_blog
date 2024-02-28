@@ -4,6 +4,8 @@ import { GraphQLClient, gql } from "graphql-request";
 import "../app/globals.css";
 import BlogCard from "../components/BlogCard.js";
 import Head from "next/head";
+import "../prismJS/prism.css";
+import "../prismJS/prism.js";
 
 const graphCMS = new GraphQLClient(
 	"https://api-eu-central-1-shared-euc1-02.hygraph.com/v2/clsuoxac30mle07waqofhmifn/master",

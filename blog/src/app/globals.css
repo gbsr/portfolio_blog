@@ -79,14 +79,15 @@ body {
 }
 
 body {
-	font-size: calc(20px + 0.3vw); /* This will scale the font-size based on viewport size */
+	font-size: calc(20px + 0.2vw); /* This will scale the font-size based on viewport size */
 }
 code {
 	font-size: 16px;
 	font-weight: 400;
 	font-family: var(--font-mono);
-	color: #479a9a;
-	width: fit-content;
+	color: #52d538;
+	display: flex;
+	flex-wrap: wrap;
 }
 
 .truncate {
@@ -98,6 +99,7 @@ code {
 	background: rgb(30, 30, 30);
 	border-radius: 4px;
 	margin-top: 2rem;
+	border: transparent;
 }
 
 .content > p {
@@ -117,6 +119,7 @@ code {
 	background: black;
 	border: 1px solid rgb(63, 62, 62);
 	border-radius: 8px;
+	color: rgb(235, 235, 235);
 }
 
 @media (max-width: 600px) {
