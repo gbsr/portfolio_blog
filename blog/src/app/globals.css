@@ -90,12 +90,33 @@ code {
 }
 
 .truncate {
-	display: -webkit-box;
-	-webkit-line-clamp: 3 !important; /* number of lines to show */
-	-webkit-box-orient: vertical !important;
-	overflow: hidden !important;
-	text-overflow: ellipsis !important;
-	height: calc((20px + 0.3vw) * 8); /* 3 lines */
+	overflow: hidden;
+	text-overflow: ellipsis;
+	transition: 50ms ease-in;
+	max-height: calc((60px + 0.3vw) * 3);
+	padding: 2rem;
+	background: rgb(30, 30, 30);
+	border-radius: 4px;
+	margin-top: 2rem;
+}
+
+.content > p {
+	transition: 250ms;
+	opacity: 0.5;
+}
+
+.content > p {
+	transition: 250ms;
+	opacity: 1;
+}
+.expand {
+	margin-top: 2rem;
+	padding: 2rem;
+	transition: 150ms ease-in;
+	max-height: 100vh; /* or any large value */
+	background: black;
+	border: 1px solid rgb(63, 62, 62);
+	border-radius: 8px;
 }
 
 @media (max-width: 600px) {

@@ -19,7 +19,7 @@ export default function BlogPost({
 	};
 
 	return (
-		<div className={`${styles.card} ${!isExpanded ? 'truncate' : ''}`} onClick={handleContentClick}>
+		<div className={`${isExpanded ? 'expand' : 'truncate'}`} onClick={handleContentClick}>
 			<h2 className={styles.title}>{title}</h2>
 			<span className={styles.span}>{`Date Published: ${datePublished}`}</span>
 			{tag.map((tagItem, index) => (
@@ -34,6 +34,7 @@ export default function BlogPost({
 			<div
 				className={styles.content}
 				dangerouslySetInnerHTML={{ __html: content }}
+				style={{ opacity: isExpanded ? 1 : 0.45, padding: '1rem' }}
 			></div>
 		</div>
 	);

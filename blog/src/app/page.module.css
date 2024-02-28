@@ -1,13 +1,15 @@
 .main {
 	display: flex;
 	flex-direction: column;
-	justify-content: center;
+	justify-content: flex-start;
 	align-items: center;
 	min-height: 100vh;
+	width: calc(100vw - 1.6rem);
 	max-width: var(--max-width);
 }
 .posts {
 	max-width: var(--max-width);
+	width: calc(100vw - 1.6rem);
 }
 
 .divider {
@@ -45,7 +47,6 @@
 .content {
 	width: 100%;
 
-	width: calc(100vw - 0.2rem);
 	max-width: var(--max-width);
 }
 
