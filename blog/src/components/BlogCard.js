@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import styles from '../app/page.module.css';
 
 export default function BlogPost({
@@ -10,6 +11,13 @@ export default function BlogPost({
 	onTagClick,
 	selectedTags
 }) {
+	const [isExpanded, setIsExpanded] = useState(false);
+
+	const handleContentClick = () => {
+		setIsExpanded(!isExpanded);
+		console.log('click');
+	};
+
 	return (
 		<div className={styles.card}>
 			<h2 className={styles.title}>{title}</h2>
@@ -23,7 +31,11 @@ export default function BlogPost({
 					{tagItem}
 				</span>
 			))}
-			<div dangerouslySetInnerHTML={{ __html: content }} className={styles.content}></div>
+			<div
+				className={`${styles.content} ${!isExpanded ? 'truncate' : ''}`}
+				onClick={handleContentClick}
+				dangerouslySetInnerHTML={{ __html: content }}
+			></div>
 		</div>
 	);
 }

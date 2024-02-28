@@ -9,6 +9,9 @@
 .posts {
 	max-width: var(--max-width);
 }
+.truncate {
+	max-height: 20vh !important;
+}
 .divider {
 	margin-top: 0.8rem;
 	width: 100%;

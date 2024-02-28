@@ -88,6 +88,14 @@ code {
 	color: #479a9a;
 }
 
+.truncate {
+	display: -webkit-box;
+	-webkit-line-clamp: 2 !important; /* number of lines to show */
+	-webkit-box-orient: vertical !important;
+	overflow: hidden !important;
+	text-overflow: ellipsis !important;
+}
+
 @media (max-width: 600px) {
 	body {
 		font-size: calc(20px + 0.5vw); /* Increase the base font size on smaller screens */

@@ -91,7 +91,7 @@ export default function Home({ posts }) {
 			<div className={styles.divider}></div>
 			<section className={styles.posts}>
 				<div className={styles.container}>
-					{filteredPosts.map((post) => (
+					{filteredPosts.sort((a, b) => new Date(b.datePublished) - new Date(a.datePublished)).map((post) => (
 						<BlogCard
 							key={post.id}
 							title={post.title}
