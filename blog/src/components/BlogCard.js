@@ -8,8 +8,8 @@ export default function BlogPost({
 	tag,
 	datePublished,
 	content,
-	onTagClick,
-	selectedTags
+	selectedTags,
+	setSelectedTags
 }) {
 	const [isExpanded, setIsExpanded] = useState(false);
 
@@ -18,15 +18,25 @@ export default function BlogPost({
 		console.log('click');
 	};
 
+	const onTagClick = (tagItem, event) => {
+		event.stopPropagation(); // prevent the click event from bubbling up
+
+		// Toggle the tag in the selectedTags state
+		if (selectedTags.includes(tagItem)) {
+			setSelectedTags(selectedTags.filter(tag => tag !== tagItem));
+		} else {
+			setSelectedTags([...selectedTags, tagItem]);
+		}
+	};
+
 	return (
 		<div className={`${isExpanded ? 'expand' : 'truncate'}`} onClick={handleContentClick}>
 			<h2 className={styles.title}>{title}</h2>
-			<span className={styles.span}>{`Date Published: ${datePublished}`}</span>
 			{tag.map((tagItem, index) => (
 				<span
 					key={index}
 					className={`${styles.tag} ${selectedTags.includes(tagItem) ? styles.active : ''}`}
-					onClick={() => onTagClick(tagItem)}
+					onClick={(event) => onTagClick(tagItem, event)} // pass the event to onTagClick
 				>
 					{tagItem}
 				</span>
