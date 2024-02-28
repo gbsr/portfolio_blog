@@ -1,9 +1,8 @@
-import Image from "next/image";
-import styles from '../app/page.module.css';
+import styles from "../app/page.module.css";
+import { useState, useEffect } from 'react';
 import { GraphQLClient, gql } from "graphql-request";
-import { Inter } from "next/font/google";
 import "../app/globals.css";
-
+import BlogCard from "../components/BlogCard.js";
 
 const graphCMS = new GraphQLClient(
 	"https://api-eu-central-1-shared-euc1-02.hygraph.com/v2/clsuoxac30mle07waqofhmifn/master",
@@ -20,6 +19,8 @@ const QUERY = gql`
 			title
 			id
 			slug
+			datePublished
+			tag
 			content {
 				html
 			}
@@ -27,19 +28,46 @@ const QUERY = gql`
 	}
 `;
 export async function getStaticProps() {
-	const data = await graphCMS.request(QUERY);
-	return {
-		props: {
-			posts: data.posts,
-		},
-		revalidate: 10,
-	};
+	try {
+		const { posts } = await graphCMS.request(QUERY);
+		return {
+			props: {
+				posts,
+			},
+			revalidate: 10,
+		};
+	} catch (error) {
+		console.error(error);
+		return {
+			props: {
+				posts: [],
+			},
+		};
+	}
 }
 
 export default function Home({ posts }) {
+	const [isLoading, setIsLoading] = useState(!posts);
+
+	useEffect(() => {
+		if (posts) {
+			setIsLoading(false);
+		}
+	}, [posts]);
+
+	if (isLoading) {
+		return <div>Loading...</div>;
+	}
+	console.log(posts);
+	const [selectedTag, setSelectedTag] = useState(null);
+
+	const filteredPosts = selectedTag
+		? posts.filter((post) => post.tag.includes(selectedTag))
+		: posts;
+
 	return (
 		<main className={styles.main}>
-			<section className="main-content">
+			<section className={styles.mainContent}>
 				{" "}
 				<h1>Pushing Pixels</h1>
 				<p>
@@ -53,13 +81,20 @@ export default function Home({ posts }) {
 					towards being a frontend developer.
 				</p>
 			</section>
-			<section className="posts">
-				<div className={styles.card}>
-					{posts.map((post) => (
-						<div key={post.id} className={styles.card}>
-							<h2>{post.title}</h2>
-							<div dangerouslySetInnerHTML={{ __html: post.content.html }} />
-						</div>
+
+			<div className={styles.divider}></div>
+			<section className={styles.posts}>
+				<div className={styles.container}>
+					{filteredPosts.map((post) => (
+						<BlogCard
+							key={post.id}
+							title={post.title}
+							datePublished={post.datePublished}
+							slug={post.slug}
+							tag={post.tag}
+							content={post.content.html}
+							onTagClick={setSelectedTag}
+						/>
 					))}
 				</div>
 			</section>
