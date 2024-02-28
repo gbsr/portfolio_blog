@@ -59,10 +59,16 @@ export default function Home({ posts }) {
 		return <div>Loading...</div>;
 	}
 	console.log(posts);
-	const [selectedTag, setSelectedTag] = useState(null);
+	const [selectedTags, setSelectedTags] = useState([]);
 
-	const filteredPosts = selectedTag
-		? posts.filter((post) => post.tag.includes(selectedTag))
+	const toggleTag = (tagItem) => {
+		setSelectedTags(prevTags =>
+			prevTags.includes(tagItem) ? prevTags.filter(tag => tag !== tagItem) : [...prevTags, tagItem]
+		);
+	};
+
+	const filteredPosts = selectedTags.length > 0
+		? posts.filter(post => selectedTags.every(tag => post.tag.includes(tag)))
 		: posts;
 
 	return (
@@ -93,7 +99,8 @@ export default function Home({ posts }) {
 							slug={post.slug}
 							tag={post.tag}
 							content={post.content.html}
-							onTagClick={setSelectedTag}
+							onTagClick={toggleTag}
+							selectedTags={selectedTags}
 						/>
 					))}
 				</div>
