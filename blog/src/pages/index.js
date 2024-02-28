@@ -4,8 +4,7 @@ import { GraphQLClient, gql } from "graphql-request";
 import "../app/globals.css";
 import BlogCard from "../components/BlogCard.js";
 import Head from "next/head";
-import "../prismJS/prism.css";
-import "../prismJS/prism.js";
+
 
 const graphCMS = new GraphQLClient(
 	"https://api-eu-central-1-shared-euc1-02.hygraph.com/v2/clsuoxac30mle07waqofhmifn/master",
@@ -70,14 +69,19 @@ export default function Home({ posts }) {
 		);
 	};
 
+	// Assuming `posts` is an array of your blog posts
 	const filteredPosts = selectedTags.length > 0
-		? posts.filter(post => selectedTags.every(tag => post.tag.includes(tag)))
-		: posts;
-
+		? posts.filter(post =>
+			// Check if any of the selected tags is included in the post's tags
+			selectedTags.some(selectedTag => post.tag.includes(selectedTag))
+		)
+		: posts; // If no tags are selected, display all posts
 	return (
 		<div>
 			<Head>
+				<title>Pushing Pixels - Learning Frontend Development one line at a time</title>
 				<meta name="viewport" content="width=device-width, initial-scale=1" />
+				<meta name="description" content="Personal blog documenting my journey learning frontend development. Featuring code snippets, experiments, and insights into HTML, CSS, JavaScript, React, and more."></meta>
 			</Head>
 			<main className={styles.main}>
 				<section className={styles.mainContent}>

@@ -76,7 +76,7 @@ export default function BlogPost({
 				ref={contentRef}
 				className={styles.content}
 				dangerouslySetInnerHTML={{ __html: content }}
-				style={{ opacity: isExpanded ? 1 : 0.45, padding: '1rem' }}
+				style={{ opacity: isExpanded ? 1 : 0.65, padding: '1rem' }}
 			></div>
 		</div>
 	);
