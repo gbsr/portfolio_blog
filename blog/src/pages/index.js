@@ -3,6 +3,7 @@ import { useState, useEffect } from 'react';
 import { GraphQLClient, gql } from "graphql-request";
 import "../app/globals.css";
 import BlogCard from "../components/BlogCard.js";
+import Head from "next/head";
 
 const graphCMS = new GraphQLClient(
 	"https://api-eu-central-1-shared-euc1-02.hygraph.com/v2/clsuoxac30mle07waqofhmifn/master",
@@ -72,39 +73,44 @@ export default function Home({ posts }) {
 		: posts;
 
 	return (
-		<main className={styles.main}>
-			<section className={styles.mainContent}>
-				{" "}
-				<h1>Pushing Pixels</h1>
-				<p>
-					Welcome to Pushing Pixels, the personal blog of{" "}
-					<a href="https://andershofsten.com" target="_blank">
-						Anders Hofsten
-					</a>
-				</p>
-				<p>
-					This is where I will post random bits and bobs I find/create as I am trying to shift my career
-					towards being a frontend developer.
-				</p>
-			</section>
+		<div>
+			<Head>
+				<meta name="viewport" content="width=device-width, initial-scale=1" />
+			</Head>
+			<main className={styles.main}>
+				<section className={styles.mainContent}>
+					{" "}
+					<h1>Pushing Pixels</h1>
+					<p>
+						Welcome to Pushing Pixels, the personal blog of{" "}
+						<a href="https://andershofsten.com" target="_blank">
+							Anders Hofsten
+						</a>
+					</p>
+					<p>
+						This is where I will post random bits and bobs I find/create as I am trying to shift my career
+						towards being a frontend developer.
+					</p>
+				</section>
 
-			<div className={styles.divider}></div>
-			<section className={styles.posts}>
-				<div className={styles.container}>
-					{filteredPosts.sort((a, b) => new Date(b.datePublished) - new Date(a.datePublished)).map((post) => (
-						<BlogCard
-							key={post.id}
-							title={post.title}
-							datePublished={post.datePublished}
-							slug={post.slug}
-							tag={post.tag}
-							content={post.content.html}
-							onTagClick={toggleTag}
-							selectedTags={selectedTags}
-						/>
-					))}
-				</div>
-			</section>
-		</main>
+				<div className={styles.divider}></div>
+				<section className={styles.posts}>
+					<div className={styles.container}>
+						{filteredPosts.sort((a, b) => new Date(b.datePublished) - new Date(a.datePublished)).map((post) => (
+							<BlogCard
+								key={post.id}
+								title={post.title}
+								datePublished={post.datePublished}
+								slug={post.slug}
+								tag={post.tag}
+								content={post.content.html}
+								onTagClick={toggleTag}
+								selectedTags={selectedTags}
+							/>
+						))}
+					</div>
+				</section>
+			</main>
+		</div>
 	);
 }

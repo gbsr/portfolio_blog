@@ -19,7 +19,7 @@ export default function BlogPost({
 	};
 
 	return (
-		<div className={styles.card}>
+		<div className={`${styles.card} ${!isExpanded ? 'truncate' : ''}`} onClick={handleContentClick}>
 			<h2 className={styles.title}>{title}</h2>
 			<span className={styles.span}>{`Date Published: ${datePublished}`}</span>
 			{tag.map((tagItem, index) => (
@@ -32,8 +32,7 @@ export default function BlogPost({
 				</span>
 			))}
 			<div
-				className={`${styles.content} ${!isExpanded ? 'truncate' : ''}`}
-				onClick={handleContentClick}
+				className={styles.content}
 				dangerouslySetInnerHTML={{ __html: content }}
 			></div>
 		</div>

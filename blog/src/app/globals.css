@@ -73,7 +73,7 @@ p {
 }
 html,
 body {
-	max-width: 100vw;
+	max-width: 100%;
 	min-height: 100vh;
 	overflow-x: hidden;
 }
@@ -86,14 +86,16 @@ code {
 	font-weight: 400;
 	font-family: var(--font-mono);
 	color: #479a9a;
+	width: fit-content;
 }
 
 .truncate {
 	display: -webkit-box;
-	-webkit-line-clamp: 2 !important; /* number of lines to show */
+	-webkit-line-clamp: 3 !important; /* number of lines to show */
 	-webkit-box-orient: vertical !important;
 	overflow: hidden !important;
 	text-overflow: ellipsis !important;
+	height: calc((20px + 0.3vw) * 8); /* 3 lines */
 }
 
 @media (max-width: 600px) {
