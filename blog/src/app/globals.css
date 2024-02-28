@@ -114,7 +114,6 @@ code {
 .expand {
 	margin-top: 2rem;
 	padding: 2rem;
-	transition: 150ms ease-in;
 	background: black;
 	border: 1px solid rgb(63, 62, 62);
 	border-radius: 8px;

@@ -49,6 +49,7 @@ export default function BlogPost({
 		console.log('click');
 	};
 
+
 	const onTagClick = (tagItem, event) => {
 		event.stopPropagation(); // prevent the click event from bubbling up
 

@@ -1,0 +1,27 @@
+.tagCloudWrapper {
+	position: fixed;
+	bottom: 0;
+	background: #0f0f0f;
+	z-index: 10000;
+	width: 100vw;
+}
+
+.tag {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	transition: 150ms ease-in;
+	padding: 0.25rem;
+	margin: 0.5rem;
+	border-radius: 15px;
+	color: #2ac2e4;
+	border: 1px solid rgba(0, 0, 0, 0);
+}
+
+.active {
+	border: 1px solid rgba(122, 122, 122, 0.25);
+	transition: 150ms ease-in;
+	text-shadow: rgb(114, 200, 246) 0px 0px 32px;
+	text-shadow: rgb(66, 189, 255) 0px 0px 22px;
+	text-shadow: rgb(247, 246, 246) 0px 0px 12px;
+}

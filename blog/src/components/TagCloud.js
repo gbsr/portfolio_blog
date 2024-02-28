@@ -1,42 +1,49 @@
 import React from 'react';
-import styles from './TagCloud.module.css'; // import your styles
+// import styles from '../app/page.module.css';
+import styles from './TagCloud.module.css';
+// import styles from './TagCloud.module.css'; // import your styles
 
 const countTagFrequency = (posts) => {
 	const tagFrequency = {};
 
 	posts.forEach((post) => {
-		post.tags.forEach((tag) => {
-			if (tagFrequency[tag]) {
-				tagFrequency[tag]++;
-			} else {
-				tagFrequency[tag] = 1;
-			}
-		});
+		if (post.tag) {
+			post.tag.forEach((tag) => {
+				if (tagFrequency[tag]) {
+					tagFrequency[tag]++;
+				} else {
+					tagFrequency[tag] = 1;
+				}
+			});
+		}
 	});
 
 	return tagFrequency;
 };
-import React from 'react';
-import styles from './TagCloud.module.css'; // import your styles
 
-const TagCloud = ({ posts, selectedTags, onTagClick }) => {
+
+const TagCloud = ({ posts, selectedTags = [], onTagClick }) => {
 	const tagFrequency = countTagFrequency(posts);
 
 	return (
-		<div className={styles.tagCloud}>
-			{Object.keys(tagFrequency).map((tagItem) => (
-				<span
-					key={tagItem}
-					className={`${styles.tag} ${selectedTags.includes(tagItem) ? styles.active : ''}`}
-					onClick={() => onTagClick(tagItem)}
-					style={{ fontSize: `${tagFrequency[tagItem]}em` }} // adjust this to scale the font size as you want
-				>
-					{tagItem}
-				</span>
-			))}
+		<div className={styles.tagCloudWrapper}>
+			<div className={styles.tag}>
+
+
+				{Object.keys(tagFrequency).map((tagItem) => (
+					<span
+						key={tagItem}
+						className={`${styles.tag} ${selectedTags.includes(tagItem) ? styles.active : ''}`}
+						onClick={() => onTagClick(tagItem)}
+						// fancy logaritmic curve to set font size based on tag frequency. Adjust the exponent to scale the font size 
+						style={{ fontSize: `${tagFrequency[tagItem] === 0 ? 0 : 1 + Math.log(tagFrequency[tagItem])}em` }}
+					>
+						{tagItem}
+					</span>
+				))}
+			</div>
 		</div>
 	);
 };
 
-export default TagCloud;
 export default TagCloud;

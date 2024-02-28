@@ -30,7 +30,7 @@
 	border: 1px solid rgba(0, 0, 0, 0);
 }
 
-.tag.active {
+.active {
 	/* border: 1px solid rgba(122, 122, 122, 0.084); */
 	transition: 150ms ease-in;
 	text-shadow: rgb(114, 200, 246) 0px 0px 32px;
@@ -203,7 +203,12 @@
 		height: 0;
 		overflow: hidden;
 	}
-
+	.footer {
+		position: fixed;
+		bottom: 0;
+		width: 100%;
+		background: #f8f9fa; /* Change this to match your site's footer color */
+	}
 	.card h2 {
 		margin-bottom: 0.5rem;
 	}

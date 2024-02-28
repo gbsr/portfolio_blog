@@ -3,6 +3,7 @@ import { useState, useEffect } from 'react';
 import { GraphQLClient, gql } from "graphql-request";
 import "../app/globals.css";
 import BlogCard from "../components/BlogCard.js";
+import TagCloud from "../components/TagCloud.js";
 import Head from "next/head";
 
 
@@ -47,6 +48,8 @@ export async function getStaticProps() {
 		};
 	}
 }
+
+
 
 export default function Home({ posts }) {
 	const [isLoading, setIsLoading] = useState(!posts);
@@ -117,6 +120,12 @@ export default function Home({ posts }) {
 						))}
 					</div>
 				</section>
+				<TagCloud
+					className={styles.footer}
+					posts={posts}
+					onTagClick={toggleTag}
+					selectedTags={selectedTags}
+				/>
 			</main>
 		</div>
 	);
