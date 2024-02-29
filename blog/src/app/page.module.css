@@ -1,3 +1,8 @@
+/**
+ * Styles for the main page layout and content.
+ * Defines CSS classes for the main content container, post list, dividers, tags, header, content sections, card grid, etc.  
+ * Includes responsive styles for mobile and tablet views.
+*/
 .main {
 	display: flex;
 	flex-direction: column;
@@ -197,6 +202,10 @@
 		transition: all 0.5s ease-in;
 	}
 
+	/**
+  * Hides an element by setting its opacity to 0, height to 0, 
+  * and overflow to hidden. Used for smooth hiding animations.
+  */
 	.removed {
 		transition: all 2.5s ease-in;
 		opacity: 0;

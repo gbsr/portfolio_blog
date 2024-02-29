@@ -1,11 +1,15 @@
+/**
+ * Home page component that fetches blog posts from GraphCMS and displays them.
+ * Allows filtering posts by tag.
+ * Uses React hooks for state management.
+ */
 import styles from "../app/page.module.css";
-import { useState, useEffect } from 'react';
+import { useState, useEffect } from "react";
 import { GraphQLClient, gql } from "graphql-request";
 import "../app/globals.css";
 import BlogCard from "../components/BlogCard.js";
 import TagCloud from "../components/TagCloud.js";
 import Head from "next/head";
-
 
 const graphCMS = new GraphQLClient(
 	"https://api-eu-central-1-shared-euc1-02.hygraph.com/v2/clsuoxac30mle07waqofhmifn/master",
@@ -49,8 +53,6 @@ export async function getStaticProps() {
 	}
 }
 
-
-
 export default function Home({ posts }) {
 	const [isLoading, setIsLoading] = useState(!posts);
 
@@ -67,25 +69,31 @@ export default function Home({ posts }) {
 	const [selectedTags, setSelectedTags] = useState([]);
 
 	const toggleTag = (tagItem) => {
-		setSelectedTags(prevTags =>
-			prevTags.includes(tagItem) ? prevTags.filter(tag => tag !== tagItem) : [...prevTags, tagItem]
+		setSelectedTags((prevTags) =>
+			prevTags.includes(tagItem) ? prevTags.filter((tag) => tag !== tagItem) : [...prevTags, tagItem]
 		);
 	};
 
 	// Assuming `posts` is an array of your blog posts
-	const filteredPosts = selectedTags.length > 0
-		? posts.filter(post =>
-			// Check if any of the selected tags is included in the post's tags
-			selectedTags.some(selectedTag => post.tag.includes(selectedTag))
-		)
-		: posts; // If no tags are selected, display all posts
+	const filteredPosts =
+		selectedTags.length > 0
+			? posts.filter((post) =>
+				// Check if any of the selected tags is included in the post's tags
+				selectedTags.some((selectedTag) => post.tag.includes(selectedTag))
+			)
+			: posts; // If no tags are selected, display all posts
 	return (
 		<div>
 			<Head>
 				<title>Pushing Pixels - Learning Frontend Development one line at a time</title>
 				<meta name="viewport" content="width=device-width, initial-scale=1" />
-				<meta name="description" content="Personal blog documenting my journey learning frontend development. Featuring code snippets, experiments, and insights into HTML, CSS, JavaScript, React, and more."></meta>
-				<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap" rel="stylesheet" />
+				<meta
+					name="description"
+					content="Personal blog documenting my journey learning frontend development. Featuring code snippets, experiments, and insights into HTML, CSS, JavaScript, React, and more."></meta>
+				<link
+					href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap"
+					rel="stylesheet"
+				/>
 			</Head>
 			<main className={styles.main}>
 				<section className={styles.mainContent}>
@@ -99,34 +107,32 @@ export default function Home({ posts }) {
 					</p>
 					<p>
 						This is where I will post random bits and bobs I find/create as I am trying to shift my career
-						towards being a frontend developer. Click the card to expand the post, or click the tags to filter posts :)
+						towards being a frontend developer. Click the card to expand the post, or click the tags to
+						filter posts :)
 					</p>
 				</section>
 
 				<div className={styles.divider}></div>
 				<section className={styles.posts}>
 					<div className={styles.container}>
-						{filteredPosts.sort((a, b) => new Date(b.datePublished) - new Date(a.datePublished)).map((post) => (
-							<BlogCard
-								key={post.id}
-								title={post.title}
-								datePublished={post.datePublished}
-								slug={post.slug}
-								tag={post.tag}
-								content={post.content.html}
-								onTagClick={toggleTag}
-								selectedTags={selectedTags}
-								setSelectedTags={setSelectedTags}
-							/>
-						))}
+						{filteredPosts
+							.sort((a, b) => new Date(b.datePublished) - new Date(a.datePublished))
+							.map((post) => (
+								<BlogCard
+									key={post.id}
+									title={post.title}
+									datePublished={post.datePublished}
+									slug={post.slug}
+									tag={post.tag}
+									content={post.content.html}
+									onTagClick={toggleTag}
+									selectedTags={selectedTags}
+									setSelectedTags={setSelectedTags}
+								/>
+							))}
 					</div>
 				</section>
-				<TagCloud
-					className={styles.footer}
-					posts={posts}
-					onTagClick={toggleTag}
-					selectedTags={selectedTags}
-				/>
+				<TagCloud className={styles.footer} posts={posts} onTagClick={toggleTag} selectedTags={selectedTags} />
 			</main>
 		</div>
 	);

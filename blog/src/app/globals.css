@@ -1,3 +1,10 @@
+/**
+ * Global CSS variables and base styles.
+ * 
+ * Defines CSS custom properties for colors, typography, layout, etc.
+ * Base styles for HTML elements like body, headings, paragraphs. 
+ * Media queries for responsiveness.
+ */
 :root {
 	--max-width: 1100px;
 	--border-radius: 12px;
@@ -64,6 +71,11 @@
 
 *::-webkit-scrollbar {
 	display: none;
+}
+
+blockquote {
+	font-size: 16px;
+	font-weight: 200;
 }
 
 h1 {

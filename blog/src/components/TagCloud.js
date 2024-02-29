@@ -1,7 +1,5 @@
 import React from 'react';
-// import styles from '../app/page.module.css';
 import styles from './TagCloud.module.css';
-// import styles from './TagCloud.module.css'; // import your styles
 
 const countTagFrequency = (posts) => {
 	const tagFrequency = {};

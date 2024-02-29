@@ -1,13 +1,28 @@
+/**
+ * Styles for the tag cloud component.
+ * 
+ * .tagCloudWrapper - Wraps the tag cloud at the bottom of the screen.
+ * .tag - Styles for each tag in the cloud. Centers text, adds transition, etc. 
+ * .active - Styles for an active tag. Adds border, text shadow, etc.
+ */
 .tagCloudWrapper {
 	position: fixed;
 	bottom: 0;
 	background: #0f0f0f;
+	justify-content: center;
+	align-items: center;
 	z-index: 10000;
 	width: 100vw;
+	display: flex;
+	height: 100px;
+	flex-direction: column;
+	white-space: nowrap;
 }
 
 .tag {
-	display: flex;
+	flex-shrink: 1;
+	flex-grow: 1;
+	flex-basis: auto;
 	align-items: center;
 	justify-content: center;
 	transition: 150ms ease-in;
