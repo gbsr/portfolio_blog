@@ -16,7 +16,7 @@
 .posts {
 	max-width: var(--max-width);
 	width: calc(100vw - 1.6rem);
-	border: 1px solid pink;
+	/* border: 1px solid pink; */
 	flex: 1 0 auto; /* add this */
 }
 
