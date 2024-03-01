@@ -5,6 +5,7 @@
 */
 .main {
 	display: flex;
+	flex-wrap: wrap;
 	flex-direction: column;
 	justify-content: flex-start;
 	align-items: center;
@@ -15,10 +16,12 @@
 .posts {
 	max-width: var(--max-width);
 	width: calc(100vw - 1.6rem);
+	border: 1px solid pink;
+	flex: 1 0 auto; /* add this */
 }
 
 .divider {
-	margin-top: 0.8rem;
+	margin: 0.8rem;
 	width: 100%;
 	height: 36px;
 	border-radius: 4px;
@@ -121,7 +124,7 @@
 
 .card h2 {
 	font-weight: 600;
-	margin-bottom: 0.7rem;
+	margin-bottom: 0.1rem;
 }
 
 .card p {
@@ -216,11 +219,11 @@
 		position: fixed;
 		bottom: 0;
 		width: 100%;
-		height: 100px;
+		/* height: 100px; */
 		background: #f8f9fa; /* Change this to match your site's footer color */
 	}
 	.card h2 {
-		margin-bottom: 0.5rem;
+		margin-bottom: 0.15rem;
 	}
 
 	.center {

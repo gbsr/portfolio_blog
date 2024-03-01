@@ -73,7 +73,7 @@ export default function BlogPost({ title, slug, id, tag, datePublished, content,
 		<div
 			className={`${isExpanded ? "expand" : "truncate"}`}
 			onClick={handleContentClick}
-			style={{ marginBottom: "106px" }}>
+			style={{ marginBottom: "60px" }}>
 			<h2 className={styles.title}>{title}</h2>
 			{tag.map((tagItem, index) => (
 				<span

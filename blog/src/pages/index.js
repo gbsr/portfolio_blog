@@ -4,7 +4,7 @@
  * Uses React hooks for state management.
  */
 import styles from "../app/page.module.css";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useLayoutEffect } from "react";
 import { GraphQLClient, gql } from "graphql-request";
 import "../app/globals.css";
 import BlogCard from "../components/BlogCard.js";
@@ -52,6 +52,12 @@ export async function getStaticProps() {
 		};
 	}
 }
+/**
+ * Adjusts the height of the <main> element to fill the viewport height.
+ * Gets the height of the footer element and sets the minHeight of
+ * the main element to fill the remaining space. This ensures the
+ * main content scrolls separately from the footer.
+*/
 
 export default function Home({ posts }) {
 	const [isLoading, setIsLoading] = useState(!posts);
@@ -61,6 +67,8 @@ export default function Home({ posts }) {
 			setIsLoading(false);
 		}
 	}, [posts]);
+
+	// we use LayoutEffect here to run our hook after main components has rendered
 
 	if (isLoading) {
 		return <div>Loading...</div>;
@@ -82,6 +90,7 @@ export default function Home({ posts }) {
 				selectedTags.some((selectedTag) => post.tag.includes(selectedTag))
 			)
 			: posts; // If no tags are selected, display all posts
+
 	return (
 		<div>
 			<Head>
@@ -113,6 +122,9 @@ export default function Home({ posts }) {
 				</section>
 
 				<div className={styles.divider}></div>
+				<TagCloud className={styles.footer} posts={posts} onTagClick={toggleTag} selectedTags={selectedTags} />
+				<div className={styles.divider}></div>
+
 				<section className={styles.posts}>
 					<div className={styles.container}>
 						{filteredPosts
@@ -132,8 +144,11 @@ export default function Home({ posts }) {
 							))}
 					</div>
 				</section>
-				<TagCloud className={styles.footer} posts={posts} onTagClick={toggleTag} selectedTags={selectedTags} />
+
+
 			</main>
 		</div>
 	);
+
 }
+
