@@ -20,6 +20,8 @@ const countTagFrequency = (posts) => {
 };
 
 
+
+
 const TagCloud = ({ posts, selectedTags = [], onTagClick }) => {
 	const tagFrequency = countTagFrequency(posts);
 

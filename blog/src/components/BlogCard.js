@@ -70,25 +70,39 @@ export default function BlogPost({ title, slug, id, tag, datePublished, content,
 	};
 
 	return (
-		<div
-			className={`${isExpanded ? "expand" : "truncate"}`}
-			onClick={handleContentClick}
-			style={{ marginBottom: "60px" }}>
-			<h2 className={styles.title}>{title}</h2>
-			{tag.map((tagItem, index) => (
-				<span
-					key={index}
-					className={`${styles.tag} ${selectedTags.includes(tagItem) ? styles.active : ""}`}
-					onClick={(event) => onTagClick(tagItem, event)} // pass the event to onTagClick
-				>
-					{tagItem}
-				</span>
-			))}
+		<div style={{ position: 'relative', marginBottom: '60px' }}>
 			<div
-				ref={contentRef}
-				className={isExpanded ? "expanded" : "truncated"}
-				dangerouslySetInnerHTML={{ __html: content }}
-			></div>
+				className={`${isExpanded ? "expand" : "truncate"}`}
+				onClick={handleContentClick}>
+				<h2 className={styles.title}>{title}</h2>
+				{tag.map((tagItem, index) => (
+					<span
+						key={index}
+						className={`${styles.tag} ${selectedTags.includes(tagItem) ? styles.active : ""}`}
+						onClick={(event) => onTagClick(tagItem, event)} // pass the event to onTagClick
+					>
+						{tagItem}
+					</span>
+				))}
+				<div
+					ref={contentRef}
+					className={isExpanded ? "expanded" : "truncated"}
+					dangerouslySetInnerHTML={{ __html: content }}
+				></div>
+			</div>
+			<div style={{
+				position: 'absolute',
+				fontSize: '1rem',
+				bottom: '0',
+				right: '0',
+				backgroundColor: 'rgba(0, 0, 0, 1)', // Change this as needed
+				color: 'white', // Change this as needed
+				cursor: 'pointer'
+				// border: '1px solid pink'
+			}}
+				onClick={handleContentClick}>
+				read more
+			</div>
 		</div>
 	);
 }

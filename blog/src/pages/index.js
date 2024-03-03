@@ -4,7 +4,7 @@
  * Uses React hooks for state management.
  */
 import styles from "../app/page.module.css";
-import { useState, useEffect, useLayoutEffect } from "react";
+import { useState, useEffect } from "react";
 import { GraphQLClient, gql } from "graphql-request";
 import "../app/globals.css";
 import BlogCard from "../components/BlogCard.js";
@@ -52,12 +52,6 @@ export async function getStaticProps() {
 		};
 	}
 }
-/**
- * Adjusts the height of the <main> element to fill the viewport height.
- * Gets the height of the footer element and sets the minHeight of
- * the main element to fill the remaining space. This ensures the
- * main content scrolls separately from the footer.
-*/
 
 export default function Home({ posts }) {
 	const [isLoading, setIsLoading] = useState(!posts);
@@ -68,7 +62,6 @@ export default function Home({ posts }) {
 		}
 	}, [posts]);
 
-	// we use LayoutEffect here to run our hook after main components has rendered
 
 	if (isLoading) {
 		return <div>Loading...</div>;
@@ -116,8 +109,7 @@ export default function Home({ posts }) {
 					</p>
 					<p>
 						This is where I will post random bits and bobs I find/create as I am trying to shift my career
-						towards being a frontend developer. Click the card to expand the post, or click the tags to
-						filter posts :)
+						towards being a frontend developer.
 					</p>
 				</section>
 

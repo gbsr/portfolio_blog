@@ -6,32 +6,30 @@
  * .active - Styles for an active tag. Adds border, text shadow, etc.
  */
 .tagCloudWrapper {
-	/* position: fixed; */
 	bottom: 0;
 	background: #0f0f0f;
 	justify-content: center;
-	align-items: center;
+	align-items: stretch;
 	z-index: 10000;
 	width: 100vw;
 	display: flex;
 	flex-wrap: wrap;
-	/* height: 100px; */
-	flex-direction: column;
+	flex-direction: row;
 	/* white-space: nowrap; */
-	margin-top: auto; /* add this */
+	margin-top: auto;
 }
 
 .tag {
-	display: flex;
+	cursor: pointer;
+	font-size: calc(1rem + 0.1vw);
+	display: inline-flex;
 	flex-wrap: wrap;
 	flex-shrink: 1;
-	flex-grow: 1;
 	flex-basis: auto;
-	align-items: flex-end;
+	align-items: center;
 	justify-content: center;
 	transition: 150ms ease-in;
-	padding: 0.25rem;
-	margin: 0.5rem;
+	padding: 0.35rem; /* Adjust as needed */
 	border-radius: 15px;
 	color: #2ac2e4;
 	border: 1px solid rgba(0, 0, 0, 0);
