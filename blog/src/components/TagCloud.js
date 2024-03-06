@@ -35,8 +35,8 @@ const TagCloud = ({ posts, selectedTags = [], onTagClick }) => {
 						key={tagItem}
 						className={`${styles.tag} ${selectedTags.includes(tagItem) ? styles.active : ''}`}
 						onClick={() => onTagClick(tagItem)}
-						// fancy logaritmic curve to set font size based on tag frequency. Adjust the exponent to scale the font size 
-						style={{ fontSize: `${tagFrequency[tagItem] === 0 ? 0 : 1 + Math.log(tagFrequency[tagItem])}em` }}
+					// fancy logaritmic curve to set font size based on tag frequency. Adjust the exponent to scale the font size 
+					// style={{ fontSize: `${tagFrequency[tagItem] === 0 ? 0 : 1 + Math.log(tagFrequency[tagItem])}em` }}
 					>
 						{tagItem}
 					</span>

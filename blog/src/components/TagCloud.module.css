@@ -19,8 +19,10 @@
 	margin-top: auto;
 }
 
-.tag {
+span.tag {
 	cursor: pointer;
+	margin: 4px;
+	margin-block: 8px;
 	font-size: calc(1rem + 0.1vw);
 	display: inline-flex;
 	flex-wrap: wrap;
@@ -29,14 +31,14 @@
 	align-items: center;
 	justify-content: center;
 	transition: 150ms ease-in;
-	padding: 0.35rem; /* Adjust as needed */
+	padding: 0.5rem;
 	border-radius: 15px;
 	color: #2ac2e4;
-	border: 1px solid rgba(0, 0, 0, 0);
+	border: 1px solid #2ac2e452;
 }
 
 .active {
-	border: 1px solid rgba(122, 122, 122, 0.25);
+	outline: 1px solid #2ac2e4;
 	transition: 150ms ease-in;
 	text-shadow: rgb(114, 200, 246) 0px 0px 32px;
 	text-shadow: rgb(66, 189, 255) 0px 0px 22px;
