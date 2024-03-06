@@ -70,7 +70,7 @@ export default function BlogPost({ title, slug, id, tag, datePublished, content,
 	};
 
 	return (
-		<div style={{ position: 'relative', marginBottom: '60px' }}>
+		<div style={{ position: 'relative', marginBottom: '30px' }}>
 			<div
 				className={`${isExpanded ? "expand" : "truncate"}`}
 				onClick={handleContentClick}>
@@ -90,19 +90,22 @@ export default function BlogPost({ title, slug, id, tag, datePublished, content,
 					dangerouslySetInnerHTML={{ __html: content }}
 				></div>
 			</div>
-			<div style={{
-				position: 'absolute',
-				fontSize: '1rem',
-				bottom: '0',
-				right: '0',
-				backgroundColor: 'rgba(0, 0, 0, 1)', // Change this as needed
-				color: 'white', // Change this as needed
-				cursor: 'pointer'
-				// border: '1px solid pink'
-			}}
-				onClick={handleContentClick}>
-				read more
-			</div>
+
+			{!isExpanded && (
+				<div style={{
+					position: 'absolute',
+					fontSize: '1rem',
+					bottom: '0',
+					right: '0',
+					backgroundColor: 'rgba(0, 0, 0, 1)', // Change this as needed
+					color: 'white', // Change this as needed
+					cursor: 'pointer'
+					// border: '1px solid pink'
+				}}
+					onClick={handleContentClick}>
+					read more
+				</div>
+			)}
 		</div>
 	);
 }

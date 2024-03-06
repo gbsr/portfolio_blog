@@ -115,6 +115,7 @@ code {
 }
 
 .truncated {
+	margin-top: 1rem;
 	cursor: pointer;
 	overflow: hidden;
 	text-overflow: ellipsis;
@@ -131,7 +132,8 @@ code {
 	/* box-shadow: 0px 0px 0px 1px #03c4ef00; */
 }
 
-.truncated:hover {
+.truncated:hover,
+truncated:focus {
 	transition: 0.5s ease-in;
 	opacity: 0.75;
 	/* box-shadow: 0px 0px 0px 1px #03c4ef40; */

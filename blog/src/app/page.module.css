@@ -33,6 +33,7 @@
 
 .tag {
 	cursor: pointer;
+	margin-left: 1rem;
 	transition: 150ms ease-in;
 	padding-right: 0.5rem;
 	/* margin: 0.25rem; */
@@ -62,7 +63,8 @@
 
 .title {
 	color: #c6c6c6;
-	padding: 1rem;
+	padding-top: 1rem;
+	margin-left: 1rem;
 }
 
 .content {
