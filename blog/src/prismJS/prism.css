@@ -24,8 +24,10 @@ pre[class*="language-"] {
 	width: 100%;
 }
 pre[class*="language-"] {
-	padding: 1em;
-	margin: 0.5em 0;
+	padding: 1rem;
+	width: 96%;
+	margin: 0 auto;
+
 	overflow: auto;
 	height: auto; /* Adjust the height to fit the content */
 
@@ -34,7 +36,9 @@ pre[class*="language-"] {
 }
 :not(pre) > code[class*="language-"],
 pre[class*="language-"] {
-	background: #111111;
+	background: #2a2a2a;
+	border-radius: 10px;
+	margin: 1rem;
 }
 :not(pre) > code[class*="language-"] {
 	padding: 0.1em;
