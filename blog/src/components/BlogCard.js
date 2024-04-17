@@ -18,8 +18,8 @@
  */
 import { useState, useEffect, useRef } from "react";
 import styles from "../app/page.module.css";
-import Prism from "../prismJS/prism.css";
 import "../prismJS/prism.js";
+import Link from "next/link";
 
 export default function BlogPost({ title, slug, id, tag, datePublished, content, selectedTags, setSelectedTags }) {
 	const [isExpanded, setIsExpanded] = useState(false);
@@ -56,6 +56,7 @@ export default function BlogPost({ title, slug, id, tag, datePublished, content,
 	const handleContentClick = () => {
 		setIsExpanded(!isExpanded);
 		console.log("click");
+		console.log('card-slug:', slug);
 	};
 
 	const onTagClick = (tagItem, event) => {
@@ -69,9 +70,14 @@ export default function BlogPost({ title, slug, id, tag, datePublished, content,
 		}
 	};
 
+	console.log('slug: ', slug);
 	return (
 		<div style={{ position: 'relative', marginBottom: '30px' }}>
-			<h2 className={styles.title}>{title}</h2>
+			<Link href={`/post/${slug}`}>
+
+				<h2 className={styles.title}>{title}</h2>
+
+			</Link>
 			<div>
 				{tag.map((tagItem, index) => (
 					<span
