@@ -185,11 +185,11 @@ truncated:focus {
 	/* border-radius: 16px; */
 }
 .expanded {
-	display: flex;
+	/* display: flex; */
 	flex-direction: column;
 	opacity: 1;
 	transition: opacity 0.5s;
-	max-height: 8000px;
+	/* max-height: 8000px; */
 	transition: max-height 150ms, border-radius 0.5s, opacity 1s ease-in;
 }
 
