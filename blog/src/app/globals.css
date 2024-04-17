@@ -42,12 +42,7 @@
 		--background-end-rgb: rgb(12, 12, 12);
 
 		--primary-glow: radial-gradient(rgba(1, 65, 255, 0.4), rgba(1, 65, 255, 0));
-		--secondary-glow: linear-gradient(
-			to bottom right,
-			rgba(1, 65, 255, 0),
-			rgba(1, 65, 255, 0),
-			rgba(1, 65, 255, 0.3)
-		);
+		--secondary-glow: linear-gradient(to bottom right, rgba(1, 65, 255, 0), rgba(1, 65, 255, 0), rgba(1, 65, 255, 0.3));
 
 		--tile-start-rgb: 2, 13, 46;
 		--tile-end-rgb: 2, 5, 19;
@@ -145,8 +140,8 @@ code {
 	font-weight: 400;
 	font-family: var(--font-mono);
 	color: #52d538;
-	display: flex;
-	flex-wrap: wrap;
+	/* display: flex; */
+	/* flex-wrap: wrap; */
 }
 
 .truncate,
